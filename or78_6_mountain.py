@@ -1,19 +1,27 @@
+"""Mountain pass events and obstacles."""
+
 import random
 import or78_helpers
 
 
 def blizzard(this_vars):
+    """Blizzard event during a mountain pass."""
+
     print("BLIZZARD IN MOUNTAIN PASS--TIME AND SUPPLIES LOST")
     this_vars.is_blizzard = True
     this_vars.amount_spent_on_food -= 25
     this_vars.amount_spent_on_miscellaneous -= 10
     this_vars.amount_spent_on_bullets -= 300
-    this_vars.total_mileage = this_vars.total_mileage - 30 - (40 * random.random())
+    this_vars.total_mileage = (
+        this_vars.total_mileage - 30 - (40 * random.random())
+    )
     if this_vars.amount_spent_on_clothing < 18 + (2 * random.random()):
         or78_helpers.illness(this_vars)
 
 
 def blue_mountain(this_vars):
+    """Check for blizzard when crossing the Blue Mountains."""
+
     if this_vars.total_mileage < 1700:
         return
 
@@ -26,6 +34,8 @@ def blue_mountain(this_vars):
 
 
 def south_pass(this_vars):
+    """Cross the South Pass and possibly face a blizzard."""
+
     if this_vars.has_cleared_south_pass:
         blue_mountain(this_vars)
     else:
@@ -37,6 +47,8 @@ def south_pass(this_vars):
 
 
 def rugged_mountain(this_vars):
+    """Navigate the rugged mountain terrain."""
+
     print("RUGGED MOUNTAINS")
     if random.random() > 0.1:
         if random.random() > 0.11:
@@ -56,12 +68,16 @@ def rugged_mountain(this_vars):
 
 
 def mountain(this_vars):
+    """Main mountain handling routine."""
+
     if this_vars.total_mileage < this_vars.SOUTH_PASS_IN_MILES:
         return
 
-    if random.random() * 10 > 9 - ((this_vars.total_mileage / 100 - 15) ^ 2 + 72) / (
+    chance = random.random() * 10
+    threshold = 9 - ((this_vars.total_mileage / 100 - 15) ** 2 + 72) / (
         (this_vars.total_mileage / 100 - 15) ** 2 + 12
-    ):
+    )
+    if chance > threshold:
         south_pass(this_vars)
     else:
         rugged_mountain(this_vars)

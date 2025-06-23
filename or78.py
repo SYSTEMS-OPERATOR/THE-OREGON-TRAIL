@@ -28,6 +28,8 @@ from or78_7_endings import death, final_turn
 
 
 def game():
+    """Run a single session of the Oregon Trail game."""
+
     g_vars = GameGlobals()
 
     init(g_vars)

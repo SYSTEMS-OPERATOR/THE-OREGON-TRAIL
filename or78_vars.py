@@ -1,4 +1,9 @@
+"""Container for all game state variables used throughout the game."""
+
+
 class GameGlobals:
+    """Maintain the state of a single Oregon Trail game."""
+
     def __init__(self):
         self.dead = False
         self.GOAL_IN_MILES = 2040
@@ -47,9 +52,15 @@ class GameGlobals:
         self.has_fort = False
 
     def print_inventory(self):
+        """Print the player's current inventory values."""
+
         self.amount_spent_on_food = max(int(self.amount_spent_on_food), 0)
-        self.amount_spent_on_bullets = max(int(self.amount_spent_on_bullets), 0)
-        self.amount_spent_on_clothing = max(int(self.amount_spent_on_clothing), 0)
+        self.amount_spent_on_bullets = max(
+            int(self.amount_spent_on_bullets), 0
+        )
+        self.amount_spent_on_clothing = max(
+            int(self.amount_spent_on_clothing), 0
+        )
         self.amount_spent_on_miscellaneous = max(
             int(self.amount_spent_on_miscellaneous), 0
         )
@@ -62,12 +73,18 @@ class GameGlobals:
         print("=================================================")
 
     def increment_turn(self):
+        """Advance the game by one turn."""
+
         self.current_date += 1
 
     def print_too_long(self):
+        """Handle the player taking too long to finish the journey."""
+
         print("YOU HAVE BEEN ON THE TRAIL TOO LONG ------")
         print("YOUR FAMILY DIES IN THE FIRST BLIZZARD OF WINTER")
         self.dead = True
 
     def no_turns_left(self, arr):
+        """Return ``True`` if the current date index exceeds ``arr`` length."""
+
         return self.current_date >= len(arr)

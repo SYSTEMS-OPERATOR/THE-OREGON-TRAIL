@@ -1,7 +1,10 @@
+"""Initial setup and purchasing phase of the Oregon Trail game."""
+
 import or78_helpers
 
 
 def need_intro():
+    """Display introductory instructions if requested."""
     message = """THIS PROGRAM SIMULATES A TRIP OVER THE OREGON TRAIL FROM
     INDEPENDENCE, MISSOURI TO OREGON CITY, OREGON IN 1847.
     YOUR FAMILY OF FIVE WILL COVER THE 2040 MILE OREGON TRAIL
@@ -52,6 +55,7 @@ def need_intro():
 
 
 def marksman_level():
+    """Ask the player for their shooting skill level."""
     message = """HOW GOOD A SHOT ARE YOU WITH YOUR RIFLE?
         (1) ACE MARKSMAN,  (2) GOOD SHOT,  (3) FAIR TO MIDDLIN'
         (4) NEED MORE PRACTICE,  (5) SHAKY KNEES
@@ -62,6 +66,7 @@ def marksman_level():
 
 
 def oxen():
+    """Prompt for money spent on oxen within valid range."""
     message = "HOW MUCH DO YOU WANT TO SPEND ON YOUR OXEN TEAM ?"
     amount = 0
     while amount < 200 or amount > 300:
@@ -74,6 +79,7 @@ def oxen():
 
 
 def general_expenses(var):
+    """Generic prompt for purchasing supplies of type ``var``."""
     message = "HOW MUCH DO YOU WANT TO SPEND ON {}? ".format(var)
     amount = -1
     while amount < 0:
@@ -84,6 +90,7 @@ def general_expenses(var):
 
 
 def init(this_vars):
+    """Initialize the game and handle initial purchases."""
     # ***INSTRUCTIONS***
     need_intro()
     this_vars.shooting_level = marksman_level()

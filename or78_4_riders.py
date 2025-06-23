@@ -3,6 +3,7 @@ import or78_helpers
 
 
 def outcome(this_vars):
+    """Print the result of a rider encounter."""
     if this_vars.hostility_of_riders:
         print("RIDERS WERE HOSTILE--CHECK FOR LOSSES")
         if this_vars.amount_spent_on_bullets < 0:
@@ -13,6 +14,7 @@ def outcome(this_vars):
 
 
 def shooting_outcome(response_time, this_vars):
+    """Report outcome based on player's shooting response."""
     if response_time <= 1:
         print("NICE SHOOTING---YOU DROVE THEM OFF")
         outcome(this_vars)
@@ -26,6 +28,7 @@ def shooting_outcome(response_time, this_vars):
 
 
 def attack_riders(this_vars):
+    """Resolve attacking the approaching riders."""
     response_time = or78_helpers.shooting(this_vars.shooting_level)
     this_vars.amount_spent_on_bullets = (
         this_vars.amount_spent_on_bullets - (response_time * 40) - 80
@@ -34,6 +37,7 @@ def attack_riders(this_vars):
 
 
 def run_from_riders(this_vars):
+    """Handle running from riders event."""
     this_vars.total_mileage += 20
     this_vars.amount_spent_on_miscellaneous -= 15
     this_vars.amount_spent_on_bullets -= 150
@@ -42,6 +46,7 @@ def run_from_riders(this_vars):
 
 
 def continue_anyway(this_vars):
+    """Continue traveling despite rider threat."""
     if random.random() > 0.8:
         print("THEY DID NOT ATTACK")
     else:
@@ -51,6 +56,7 @@ def continue_anyway(this_vars):
 
 
 def circle_wagons(this_vars):
+    """Circle the wagons and attempt to defend."""
     response_time = or78_helpers.shooting(this_vars.shooting_level)
     this_vars.amount_spent_on_bullets = (
         this_vars.amount_spent_on_bullets - (response_time * 30) - 80
@@ -60,6 +66,7 @@ def circle_wagons(this_vars):
 
 
 def non_hostile_choices(choice, this_vars):
+    """Handle tactics when riders are friendly."""
     if choice == 2:
         this_vars.total_mileage -= 5
         this_vars.amount_spent_on_bullets -= 100
@@ -77,6 +84,7 @@ def non_hostile_choices(choice, this_vars):
 
 
 def riders(this_vars):
+    """Determine if riders appear and manage the encounter."""
     if (
         random.random() * 10
         > ((this_vars.total_mileage / 100 - 4) ** 2 + 72)
