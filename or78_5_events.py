@@ -1,14 +1,19 @@
+"""Random events that can occur during the journey."""
+
 import random
 import or78_helpers
 
 
 def cold_weather(this_vars):
-    enough_clothes = this_vars.amount_spent_on_clothing > 22 + (4 * random.random())
+    """Deal with cold weather and determine if the party survives."""
+
+    enough_clothes = (
+        this_vars.amount_spent_on_clothing > 22 + (4 * random.random())
+    )
     c_message = "" if enough_clothes else "DON'T "
     message = (
-        "COLD WEATHER---BRRRRRRR!---YOU {}HAVE ENOUGH CLOTHING TO KEEP YOU WARM".format(
-            c_message
-        )
+        "COLD WEATHER---BRRRRRRR!---YOU {}HAVE ENOUGH CLOTHING "
+        "TO KEEP YOU WARM".format(c_message)
     )
     print(message)
     if not enough_clothes:
@@ -17,6 +22,8 @@ def cold_weather(this_vars):
 
 
 def heavy_rains(this_vars):
+    """Simulate heavy rains slowing progress and costing supplies."""
+
     print("HEAVY RAINS---TIME AND SUPPLIES LOST")
     this_vars.amount_spent_on_food -= 10
     this_vars.amount_spent_on_bullets -= 500
@@ -25,6 +32,8 @@ def heavy_rains(this_vars):
 
 
 def got_shot(this_vars):
+    """Handle an event where a traveler is shot."""
+
     print("YOU GOT SHOT IN THE LEG AND THEY TOOK ONE OF YOUR OXEN")
     print("BETTER HAVE A DOC LOOK AT YOUR WOUND")
     this_vars.is_injured = True
@@ -32,8 +41,10 @@ def got_shot(this_vars):
     this_vars.amount_spent_on_animals -= 20
 
 
-##### events array #####
+# events array
 def weather(this_vars):
+    """Trigger weather events depending on distance traveled."""
+
     if this_vars.total_mileage > this_vars.SOUTH_PASS_IN_MILES:
         cold_weather(this_vars)
     else:
@@ -41,18 +52,24 @@ def weather(this_vars):
 
 
 def wagon_break_down(this_vars):
+    """Handle wagon breakdown event."""
+
     print("WAGON BREAKS DOWN--LOSE TIME AND SUPPLIES FIXING IT")
     this_vars.total_mileage -= 15 - (5 * random.random())
     this_vars.amount_spent_on_miscellaneous -= 8
 
 
 def ox_injuries(this_vars):
+    """Simulate an ox injury."""
+
     print("OX INJURES LEG--SLOWS YOU DOWN REST OF TRIP")
     this_vars.total_mileage -= 25
     this_vars.amount_spent_on_animals -= 20
 
 
 def arm_broke(this_vars):
+    """Event where a family member breaks an arm."""
+
     print("BAD LUCK--YOUR DAUGHTER BROKE HER ARM")
     print("YOU HAD TO STOP AND USE SUPPLIES TO MAKE A SLING")
     this_vars.total_mileage -= 5 - (4 * random.random())
@@ -60,26 +77,36 @@ def arm_broke(this_vars):
 
 
 def ox_wander(this_vars):
+    """An ox wanders off causing delay."""
+
     print("OX WANDERS OFF--SPEND TIME LOOKING FOR IT")
     this_vars.total_mileage -= 17
 
 
 def helpful_indians(this_vars):
+    """Friendly natives help find food."""
+
     print("HELPFUL INDIANS SHOW YOU WERE TO FIND MORE FOOD")
     this_vars.amount_spent_on_food += 14
 
 
 def lost_son(this_vars):
+    """Child lost event costing time."""
+
     print("YOUR SON GETS LOST---SPEND HALF THE DAY LOOKING FOR HIM")
     this_vars.total_mileage -= 10
 
 
 def unsafe_water(this_vars):
+    """Unsafe water delays the party."""
+
     print("UNSAFE WATER--LOSE TIME LOOKING FOR CLEAN SPRING")
     this_vars.total_mileage -= (10 * random.random()) - 2
 
 
 def wagon_fire(this_vars):
+    """Handle damage from a wagon fire."""
+
     print("THERE WAS A FIRE IN YOUR WAGON--FOOD AND SUPPLIES DAMAGE!")
     this_vars.amount_spent_on_food -= 40
     this_vars.amount_spent_on_bullets -= 400
@@ -88,11 +115,15 @@ def wagon_fire(this_vars):
 
 
 def heavy_fog(this_vars):
+    """Heavy fog event slowing down travel."""
+
     print("LOSE YOUR WAY IN HEAVY FOG---TIME IS LOST")
     this_vars.total_mileage -= 10 - (5 * random.random())
 
 
 def snake_poison(this_vars):
+    """Snake bite event possibly lethal."""
+
     print("YOU KILLED A POISONOUS SNAKE AFTER IT BIT YOU")
     this_vars.amount_spent_on_bullets -= 10
     this_vars.amount_spent_on_miscellaneous -= 5
@@ -102,6 +133,8 @@ def snake_poison(this_vars):
 
 
 def wagon_swamped(this_vars):
+    """Wagon gets swamped while fording a river."""
+
     print("WAGON GETS SWAMPED FORDING RIVER--LOSE FOOD AND CLOTHES")
     this_vars.amount_spent_on_food -= 30
     this_vars.amount_spent_on_clothing -= 20
@@ -109,6 +142,8 @@ def wagon_swamped(this_vars):
 
 
 def hail_storm(this_vars):
+    """Hail storm damages supplies."""
+
     print("HAIL STORM---SUPPLIES DAMAGED")
     this_vars.total_mileage -= 5 - (10 * random.random())
     this_vars.amount_spent_on_bullets -= 200
@@ -116,6 +151,8 @@ def hail_storm(this_vars):
 
 
 def eating(this_vars):
+    """Check for illness based on quality of meals."""
+
     RND = random.random()
     if this_vars.choice_of_eating == 1:
         or78_helpers.illness(this_vars)
@@ -128,6 +165,8 @@ def eating(this_vars):
 
 
 def animals_attack(this_vars):
+    """Handle an attack by wild animals."""
+
     print("WILD ANIMALS ATTACK!")
     response_time = or78_helpers.shooting(this_vars.shooting_level)
     if this_vars.amount_spent_on_bullets <= 38:
@@ -147,6 +186,8 @@ def animals_attack(this_vars):
 
 
 def bandits_attack(this_vars):
+    """Event triggered when bandits attack the party."""
+
     print("BANDITS ATTACK")
     response_time = or78_helpers.shooting(this_vars.shooting_level)
     this_vars.amount_spent_on_bullets -= 20 * response_time
@@ -163,7 +204,7 @@ def bandits_attack(this_vars):
             print("YOU GOT 'EM!")
 
 
-##### events array #####
+# Events array
 
 events_list = [
     weather,
@@ -186,5 +227,7 @@ events_list = [
 
 
 def events(this_vars):
+    """Choose and execute a random event."""
+
     ev = random.choice(events_list)
     ev(this_vars)

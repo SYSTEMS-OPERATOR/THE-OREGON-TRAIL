@@ -1,3 +1,5 @@
+"""Utility functions for printing dates and weekdays."""
+
 dates = [
     "MARCH 29",
     "APRIL 12 ",
@@ -33,16 +35,22 @@ weekdays = [
 
 
 def print_date(turn_number):
+    """Display the current game date."""
+
     print("==================================================")
-    print("{} {} 1847".format(weekdays[0], dates[turn_number]))
+    print(f"{weekdays[0]} {dates[turn_number]} 1847")
     print("==================================================")
 
 
 def print_weekday(amount):
+    """Return the weekday name for ``amount`` offset."""
+
     return weekdays[amount % 7]
 
 
 def print_final_date(D3):
+    """Return a formatted end date from the day index ``D3``."""
+
     # mar 29 -> dec 20 1847 = 266 days
     weekday = print_weekday(D3)
     # dec 1 = 246 days

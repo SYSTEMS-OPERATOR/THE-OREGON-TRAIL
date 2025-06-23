@@ -1,8 +1,11 @@
+"""End game scenarios for the Oregon Trail simulation."""
+
 import or78_2_date
 import or78_helpers
 
 
 def final_turn(this_vars):
+    """Handle the final calculations after reaching Oregon."""
     this_vars.fraction_of_2_weeks = (
         this_vars.GOAL_IN_MILES - this_vars.total_mileage_previous_turn
     ) / (this_vars.total_mileage - this_vars.total_mileage_previous_turn)
@@ -25,6 +28,7 @@ def final_turn(this_vars):
 
 
 def death(this_vars):
+    """Handle all death related messages and prompts."""
     if this_vars.amount_spent_on_food < 12:
         print("YOU RAN OUT OF FOOD AND STARVED TO DEATH")
     elif this_vars.is_sufficient_clothing:
@@ -37,11 +41,14 @@ def death(this_vars):
     elif this_vars.is_injured:
         print("YOU DIED OF INJURIES")
     print(
-        "DUE TO YOUR UNFORTUNATE SITUATION, THERE ARE A FEW FORMALITIES WE MUST GO THROUGH"
+        "DUE TO YOUR UNFORTUNATE SITUATION, THERE ARE A FEW "
+        "FORMALITIES WE MUST GO THROUGH"
     )
     minister = or78_helpers.input_yes_no("WOULD YOU LIKE A MINISTER?")
     funeral = or78_helpers.input_yes_no("WOULD YOU LIKE A FANCY FUNERAL?")
-    kin = or78_helpers.input_yes_no("WOULD YOU LIKE US TO INFORM YOUR NEXT OF KIN?")
+    kin = or78_helpers.input_yes_no(
+        "WOULD YOU LIKE US TO INFORM YOUR NEXT OF KIN?"
+    )
     if kin:
         print("THAT WILL BE $4.50 FOR THE TELEGRAPH CHARGE.")
     else:
