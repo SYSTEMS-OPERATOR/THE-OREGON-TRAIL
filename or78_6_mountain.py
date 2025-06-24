@@ -55,7 +55,8 @@ def rugged_mountain(this_vars):
             print("THE GOING GETS SLOW")
             # random.random() was missing parentheses which resulted in a
             # TypeError when subtracting a function object from a number.
-            # Use the generated random value instead.
+            # The original BASIC logic subtracts a small random amount
+            # from 45 miles, so use ``random.random()`` here.
             this_vars.total_mileage -= 45 - (random.random() / 0.2)
             south_pass(this_vars)
         else:

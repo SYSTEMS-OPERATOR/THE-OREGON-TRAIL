@@ -13,7 +13,7 @@ def final_turn(this_vars):
         1 - this_vars.fraction_of_2_weeks
     ) * (8 + 5 * this_vars.choice_of_eating)
     print("YOU FINALLY ARRIVED AT OREGON CITY")
-    # print the actual mileage goal reached instead of the literal text
+    # Display the number of miles actually travelled.
     print(f"AFTER {this_vars.GOAL_IN_MILES} LONG MILES---HOORAY !!!!!")
     print("A REAL PIONEER!")
     F9 = int(this_vars.fraction_of_2_weeks * 14)
