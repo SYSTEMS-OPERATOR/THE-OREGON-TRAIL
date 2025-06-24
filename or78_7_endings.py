@@ -13,7 +13,8 @@ def final_turn(this_vars):
         1 - this_vars.fraction_of_2_weeks
     ) * (8 + 5 * this_vars.choice_of_eating)
     print("YOU FINALLY ARRIVED AT OREGON CITY")
-    print("AFTER g_vars.GOAL_IN_MILES LONG MILES---HOORAY !!!!!")
+    # Display the number of miles actually travelled.
+    print(f"AFTER {this_vars.GOAL_IN_MILES} LONG MILES---HOORAY !!!!!")
     print("A REAL PIONEER!")
     F9 = int(this_vars.fraction_of_2_weeks * 14)
     days = this_vars.current_date * 14 + F9
