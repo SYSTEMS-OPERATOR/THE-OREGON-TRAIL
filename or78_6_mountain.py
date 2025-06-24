@@ -53,7 +53,11 @@ def rugged_mountain(this_vars):
     if random.random() > 0.1:
         if random.random() > 0.11:
             print("THE GOING GETS SLOW")
-            this_vars.total_mileage -= 45 - (random.random / 0.2)
+            # ``random.random`` was accidentally used without calling it,
+            # resulting in a ``TypeError`` when this line executes.
+            # The original BASIC logic subtracts a small random amount
+            # from 45 miles, so use ``random.random()`` here.
+            this_vars.total_mileage -= 45 - (random.random() / 0.2)
             south_pass(this_vars)
         else:
             print("WAGON DAMAGED!—LOSE TIME AND SUPPLIES")
