@@ -151,9 +151,11 @@ def eating(this_vars):
         print("YOU CAN'T EAT THAT WELL")
     else:
         this_vars.amount_spent_on_food = eaten
+        # BASIC line 2860: M=M+200+(A-220)/5+10*RND(-1)
+        # Increase mileage based only on oxen quality and a random boost.
         this_vars.total_mileage += (
-            this_vars.total_mileage
-            + 200
-            + (this_vars.amount_spent_on_animals - 220)
-        ) / (5 + (10 * random.random()))
+            200
+            + (this_vars.amount_spent_on_animals - 220) / 5
+            + 10 * random.random()
+        )
         this_vars.is_blizzard = this_vars.is_sufficient_clothing = False

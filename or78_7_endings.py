@@ -45,8 +45,8 @@ def death(this_vars):
         "DUE TO YOUR UNFORTUNATE SITUATION, THERE ARE A FEW "
         "FORMALITIES WE MUST GO THROUGH"
     )
-    minister = or78_helpers.input_yes_no("WOULD YOU LIKE A MINISTER?")
-    funeral = or78_helpers.input_yes_no("WOULD YOU LIKE A FANCY FUNERAL?")
+    or78_helpers.input_yes_no("WOULD YOU LIKE A MINISTER?")
+    or78_helpers.input_yes_no("WOULD YOU LIKE A FANCY FUNERAL?")
     kin = or78_helpers.input_yes_no(
         "WOULD YOU LIKE US TO INFORM YOUR NEXT OF KIN?"
     )
