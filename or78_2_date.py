@@ -38,7 +38,8 @@ def print_date(turn_number):
     """Display the current game date."""
 
     print("==================================================")
-    print(f"{weekdays[0]} {dates[turn_number]} 1847")
+    weekday = print_weekday(turn_number)
+    print(f"{weekday} {dates[turn_number]} 1847")
     print("==================================================")
 
 
