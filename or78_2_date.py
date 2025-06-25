@@ -63,7 +63,7 @@ def print_final_date(D3):
         return "{} OCTOBER {} 1847".format(weekday, D3 - 185)
     elif D3 > 155:
         return "{} SEPTEMBER {} 1847".format(weekday, D3 - 155)
-    elif D3 > 125:
+    elif D3 >= 125:
         return "{} AUGUST {} 1847".format(weekday, D3 - 124)
     else:
         return "{} JULY {} 1847".format(weekday, D3 - 93)
