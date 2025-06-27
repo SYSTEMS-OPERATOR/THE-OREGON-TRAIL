@@ -42,30 +42,28 @@ def fort(this_vars):
         or78_helpers.input_int("FOOD"), this_vars.cash_total
     )
     if is_purchase and P > 0:
-        this_vars.amount_spent_on_food += (
-            this_vars.amount_spent_on_food + 2
-        ) / (3 * P)
+        # BASIC line 2410: F=F+2/3*P
+        # Add two-thirds of the amount spent on food to the supply
+        this_vars.amount_spent_on_food += (2 * P) / 3
     this_vars.cash_total, P, is_purchase = spend(
         or78_helpers.input_int("AMMUNITION"), this_vars.cash_total
     )
     if is_purchase and P > 0:
-        this_vars.amount_spent_on_bullets += int(
-            (this_vars.amount_spent_on_bullets + 2) / (3 * P * 50)
-        )
+        # BASIC line 2440: B=INT(B+2/3*P*50)
+        # Increase bullet supply based on the money spent
+        this_vars.amount_spent_on_bullets += int((2 * P * 50) / 3)
     this_vars.cash_total, P, is_purchase = spend(
         or78_helpers.input_int("CLOTHING"), this_vars.cash_total
     )
     if is_purchase and P > 0:
-        this_vars.amount_spent_on_clothing += (
-            this_vars.amount_spent_on_clothing + 2
-        ) / (3 * P)
+        # BASIC line 2470: C=C+2/3*P
+        this_vars.amount_spent_on_clothing += (2 * P) / 3
     this_vars.cash_total, P, is_purchase = spend(
         or78_helpers.input_int("MISCELLANEOUS SUPPLIES"), this_vars.cash_total
     )
     if is_purchase and P > 0:
-        this_vars.amount_spent_on_miscellaneous += (
-            this_vars.amount_spent_on_miscellaneous + 2
-        ) / (3 * P)
+        # BASIC line 2500: M1=M1+2/3*P
+        this_vars.amount_spent_on_miscellaneous += (2 * P) / 3
     this_vars.total_mileage -= 45
     continue_on(this_vars)
 
@@ -81,7 +79,7 @@ def hunt(this_vars):
         RND = random.random()
         response_time = or78_helpers.shooting(this_vars.shooting_level)
         if response_time <= 1:
-            print("RIGHT BETWEEN THE EYES---YOU OOT A BIG ONE!!!!")
+            print("RIGHT BETWEEN THE EYES---YOU GOT A BIG ONE!!!!")
             print("FULL BELLIES TONIGHT!")
             this_vars.amount_spent_on_food = (
                 this_vars.amount_spent_on_food + 52

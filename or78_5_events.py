@@ -86,7 +86,7 @@ def ox_wander(this_vars):
 def helpful_indians(this_vars):
     """Friendly natives help find food."""
 
-    print("HELPFUL INDIANS SHOW YOU WERE TO FIND MORE FOOD")
+    print("HELPFUL INDIANS SHOW YOU WHERE TO FIND MORE FOOD")
     this_vars.amount_spent_on_food += 14
 
 
