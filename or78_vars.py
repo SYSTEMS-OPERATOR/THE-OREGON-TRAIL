@@ -29,7 +29,7 @@ class GameGlobals:
         # F1 = FLAG FOR CLEARING SOUTH PASS
         self.has_cleared_south_pass = False
         # F2 = FLAG FOR CLEARING BLUE MOUNTAINS
-        self.has_cleared_blue_montains = False
+        self.has_cleared_blue_mountains = False
         # F9 = FRACTION OF 2 WEEKS TRAVELED ON FINAL TURN
         self.fraction_of_2_weeks = 0
         # K8 = FLAG FOR INJURY
