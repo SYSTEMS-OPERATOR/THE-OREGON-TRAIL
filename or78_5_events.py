@@ -28,7 +28,8 @@ def heavy_rains(this_vars):
     this_vars.amount_spent_on_food -= 10
     this_vars.amount_spent_on_bullets -= 500
     this_vars.amount_spent_on_miscellaneous -= 15
-    this_vars.total_mileage -= (10 * random.random()) - 5
+    # BASIC: M=M-10*RND(-1)-5 -> subtract 5 plus up to 10 more miles
+    this_vars.total_mileage -= 5 + (10 * random.random())
 
 
 def got_shot(this_vars):
@@ -55,7 +56,8 @@ def wagon_break_down(this_vars):
     """Handle wagon breakdown event."""
 
     print("WAGON BREAKS DOWN--LOSE TIME AND SUPPLIES FIXING IT")
-    this_vars.total_mileage -= 15 - (5 * random.random())
+    # BASIC: M=M-15-5*RND(-1) -> subtract 15 plus up to 5 extra miles
+    this_vars.total_mileage -= 15 + (5 * random.random())
     this_vars.amount_spent_on_miscellaneous -= 8
 
 
@@ -72,8 +74,10 @@ def arm_broke(this_vars):
 
     print("BAD LUCK--YOUR DAUGHTER BROKE HER ARM")
     print("YOU HAD TO STOP AND USE SUPPLIES TO MAKE A SLING")
-    this_vars.total_mileage -= 5 - (4 * random.random())
-    this_vars.amount_spent_on_miscellaneous -= 2 - (3 * random.random())
+    # BASIC: M=M-5-4*RND(-1)
+    this_vars.total_mileage -= 5 + (4 * random.random())
+    # BASIC: M1=M1-2-3*RND(-1)
+    this_vars.amount_spent_on_miscellaneous -= 2 + (3 * random.random())
 
 
 def ox_wander(this_vars):
@@ -101,7 +105,8 @@ def unsafe_water(this_vars):
     """Unsafe water delays the party."""
 
     print("UNSAFE WATER--LOSE TIME LOOKING FOR CLEAN SPRING")
-    this_vars.total_mileage -= (10 * random.random()) - 2
+    # BASIC: M=M-10*RND(-1)-2 -> subtract 2 plus up to 10 more miles
+    this_vars.total_mileage -= 2 + (10 * random.random())
 
 
 def wagon_fire(this_vars):
@@ -110,7 +115,8 @@ def wagon_fire(this_vars):
     print("THERE WAS A FIRE IN YOUR WAGON--FOOD AND SUPPLIES DAMAGE!")
     this_vars.amount_spent_on_food -= 40
     this_vars.amount_spent_on_bullets -= 400
-    this_vars.amount_spent_on_miscellaneous -= (8 * random.random()) - 3
+    # BASIC: M1=M1-RND(-1)*8-3
+    this_vars.amount_spent_on_miscellaneous -= 3 + (8 * random.random())
     this_vars.total_mileage -= 15
 
 
@@ -118,7 +124,8 @@ def heavy_fog(this_vars):
     """Heavy fog event slowing down travel."""
 
     print("LOSE YOUR WAY IN HEAVY FOG---TIME IS LOST")
-    this_vars.total_mileage -= 10 - (5 * random.random())
+    # BASIC: M=M-10-5*RND(-1)
+    this_vars.total_mileage -= 10 + (5 * random.random())
 
 
 def snake_poison(this_vars):
@@ -138,16 +145,19 @@ def wagon_swamped(this_vars):
     print("WAGON GETS SWAMPED FORDING RIVER--LOSE FOOD AND CLOTHES")
     this_vars.amount_spent_on_food -= 30
     this_vars.amount_spent_on_clothing -= 20
-    this_vars.total_mileage -= 20 - (20 * random.random())
+    # BASIC: M=M-20-20*RND(-1)
+    this_vars.total_mileage -= 20 + (20 * random.random())
 
 
 def hail_storm(this_vars):
     """Hail storm damages supplies."""
 
     print("HAIL STORM---SUPPLIES DAMAGED")
-    this_vars.total_mileage -= 5 - (10 * random.random())
+    # BASIC: M=M-5-RND(-1)*10
+    this_vars.total_mileage -= 5 + (10 * random.random())
     this_vars.amount_spent_on_bullets -= 200
-    this_vars.amount_spent_on_miscellaneous -= 4 - (3 * random.random())
+    # BASIC: M1=M1-4-RND(-1)*3
+    this_vars.amount_spent_on_miscellaneous -= 4 + (3 * random.random())
 
 
 def eating(this_vars):
