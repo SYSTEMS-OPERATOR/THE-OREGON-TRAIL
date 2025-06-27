@@ -53,16 +53,16 @@ def rugged_mountain(this_vars):
     if random.random() > 0.1:
         if random.random() > 0.11:
             print("THE GOING GETS SLOW")
-            # BASIC: M=M-45-RND(-1)/.02
-            # Subtract 45 plus a random amount (0..50)
-            this_vars.total_mileage -= 45 + random.random() / 0.02
+            # Original BASIC used "M=M-45-RND(-1)/.02" which subtracts
+            # 45 miles plus up to ~50 additional random miles.
+            this_vars.total_mileage -= 45 + (random.random() / 0.02)
             south_pass(this_vars)
         else:
             print("WAGON DAMAGED!—LOSE TIME AND SUPPLIES")
             this_vars.amount_spent_on_miscellaneous -= 5
             this_vars.amount_spent_on_bullets -= 200
-            # BASIC: M=M-20-30*RND(-1)
-            # Subtract 20 plus up to 30 extra miles
+            # BASIC line was "M=M-20-30*RND(-1)" meaning travel is reduced by
+            # 20 miles plus up to 30 additional random miles.
             this_vars.total_mileage -= 20 + (30 * random.random())
             south_pass(this_vars)
     else:
