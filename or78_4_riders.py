@@ -6,7 +6,7 @@ def outcome(this_vars):
     """Print the result of a rider encounter."""
     if this_vars.hostility_of_riders:
         print("RIDERS WERE HOSTILE--CHECK FOR LOSSES")
-        if this_vars.amount_spent_on_bullets < 0:
+        if this_vars.amount_spent_on_bullets <= 0:
             print("YOU RAN OUT OF BULLETS AND GOT MASSACRED BY THE RIDERS")
             this_vars.dead = True
     else:
