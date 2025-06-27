@@ -5,10 +5,10 @@ import time
 
 
 def input_yes_no(message):
-    """Return ``True`` if the user's reply contains ``y``."""
+    """Return ``True`` if the user's reply starts with ``y`` (case-insensitive)."""
 
     reply = input(message)
-    return "y" in reply
+    return reply.strip().lower().startswith("y")
 
 
 def input_int(message):
