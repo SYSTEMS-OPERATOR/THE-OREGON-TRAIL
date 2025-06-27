@@ -28,7 +28,11 @@ def heavy_rains(this_vars):
     this_vars.amount_spent_on_food -= 10
     this_vars.amount_spent_on_bullets -= 500
     this_vars.amount_spent_on_miscellaneous -= 15
-    this_vars.total_mileage -= (10 * random.random()) - 5
+    # BASIC: M=M-5-10*RND(-1)
+    # Subtract at least five miles plus an additional 0..10
+    # The previous implementation accidentally allowed mileage to
+    # increase when ``random.random()`` returned a value under 0.5.
+    this_vars.total_mileage -= 5 + (10 * random.random())
 
 
 def got_shot(this_vars):
@@ -86,6 +90,7 @@ def ox_wander(this_vars):
 def helpful_indians(this_vars):
     """Friendly natives help find food."""
 
+    # Typographical fix: "where" rather than "were".
     print("HELPFUL INDIANS SHOW YOU WHERE TO FIND MORE FOOD")
     this_vars.amount_spent_on_food += 14
 
