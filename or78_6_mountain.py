@@ -25,10 +25,10 @@ def blue_mountain(this_vars):
     if this_vars.total_mileage < 1700:
         return
 
-    if this_vars.has_cleared_blue_montains:
+    if this_vars.has_cleared_blue_mountains:
         return
     else:
-        this_vars.has_cleared_blue_montains = True
+        this_vars.has_cleared_blue_mountains = True
         if random.random() < 0.7:
             blizzard(this_vars)
 
